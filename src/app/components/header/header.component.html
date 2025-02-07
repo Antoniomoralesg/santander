@@ -1,0 +1,31 @@
+<header class="bg-red-600 text-white p-4 flex items-center justify-between">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="/sant.png" alt="Santander Logo" class="h-10">
+  </div>
+
+  <!-- Información del usuario -->
+  <div *ngIf="userData" class="flex flex-col items-start">
+    <span class="text-lg font-semibold">{{ userData?.attributes?.fullName }}</span>
+    <span class="text-sm">{{ userData?.attributes?.mail }}</span>
+  </div>
+
+  <!-- Íconos de navegación -->
+  <div class="flex space-x-4">
+    <button mat-icon-button class="hover:bg-red-500 p-2 rounded">
+      <mat-icon class="text-white">help</mat-icon>
+    </button>
+    <button mat-icon-button class="hover:bg-red-500 p-2 rounded">
+      <mat-icon class="text-white">mail</mat-icon>
+    </button>
+    <button mat-icon-button class="hover:bg-red-500 p-2 rounded">
+      <mat-icon class="text-white">person</mat-icon>
+    </button>
+    <button mat-icon-button class="hover:bg-red-500 p-2 rounded">
+      <mat-icon class="text-white">support_agent</mat-icon>
+    </button>
+    <button mat-icon-button class="hover:bg-red-500 p-2 rounded">
+      <mat-icon class="text-white">logout</mat-icon>
+    </button>
+  </div>
+</header>

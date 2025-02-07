@@ -1,0 +1,58 @@
+<div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 border border-gray-300">
+  <!-- Encabezado -->
+  <div class="flex items-center justify-between border-b pb-2 mb-4">
+    <h2 class="text-red-600 font-bold text-lg">Buscador de intervinientes</h2>
+    <span class="text-gray-500 text-sm">Todos los campos son obligatorios</span>
+  </div>
+
+  <!-- Mensaje de error -->
+  <p *ngIf="!searchQuery.trim()" class="text-red-500 text-sm" role="alert">
+    El campo de búsqueda no puede estar vacío
+  </p>
+
+  <form (ngSubmit)="onSearch()" class="grid grid-cols-3 gap-4">
+    <div class="col-span-3 flex space-x-4">
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="personType" value="F" [(ngModel)]="personType" class="form-radio text-red-600" aria-label="Persona Física"> 
+        <span>Física</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="personType" value="J" [(ngModel)]="personType" class="form-radio text-red-600" aria-label="Persona Jurídica">
+        <span>Jurídica</span>
+      </label>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Criterio de búsqueda</label>
+      <select class="w-full p-2 border rounded-md" [(ngModel)]="searchCriteria" name="searchCriteria">
+        <option value="DOCUMENTO">DOCUMENTO</option>
+        <option value="NOMBRE">NOMBRE</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Tipo de documento</label>
+      <select class="w-full p-2 border rounded-md" [(ngModel)]="documentType" name="documentType" [disabled]="searchCriteria !== 'DOCUMENTO'">
+        <option value="DNI">DNI</option>
+        <option value="NIF">NIF</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Documento</label>
+      <input type="text" class="w-full p-2 border rounded-md" [(ngModel)]="searchQuery" name="searchQuery" required>
+    </div>
+
+    <div class="col-span-3 flex justify-end">
+      <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg flex items-center">
+        🔍 Buscar
+      </button>
+    </div>
+  </form>
+
+  <!-- Resultados -->
+  <div class="mt-6">
+    <h3 class="text-red-600 font-bold text-md border-b pb-2">Resultados</h3>
+    <app-results [results]="results"></app-results>
+  </div>
+</div>

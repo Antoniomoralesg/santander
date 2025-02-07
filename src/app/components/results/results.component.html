@@ -1,0 +1,25 @@
+<div class="max-w-3xl mx-auto mt-6" *ngIf="results!.length > 0; else noResults">
+
+  <table class="w-full border-collapse border border-gray-300 shadow-lg">
+    <thead>
+      <tr class="bg-gray-700 text-white">
+        <th class="p-3 border border-gray-300">Cód. de persona</th>
+        <th class="p-3 border border-gray-300">Nombre/Razón social</th>
+        <th class="p-3 border border-gray-300">Documento</th>
+        <th class="p-3 border border-gray-300">Cliente o potencial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results ?? []" class="odd:bg-gray-100 even:bg-gray-50">
+        <td class="p-3 border border-gray-300">{{ result.code }}</td>
+        <td class="p-3 border border-gray-300">{{ result.name }}</td>
+        <td class="p-3 border border-gray-300">{{ result.document }}</td>
+        <td class="p-3 border border-gray-300">{{ result.clientType }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noResults>
+  <app-alert message="No se encontraron resultados"></app-alert>
+</ng-template>

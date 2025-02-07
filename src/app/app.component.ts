@@ -1,12 +1,25 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { SearchComponent } from './components/search/search.component';
+
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [CommonModule, HeaderComponent, SearchComponent,  RouterOutlet],
+  template: `
+    <app-header></app-header>
+    
+    <app-search></app-search>
+    
+    
+    <router-outlet></router-outlet>
+  `,
+  styles: [],
 })
 export class AppComponent {
-  title = 'santander';
+  title = 'Santander app';
+  results = []; // De momento vacío, se debe llenar desde SearchComponent
 }
