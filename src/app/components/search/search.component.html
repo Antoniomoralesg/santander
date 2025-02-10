@@ -5,8 +5,7 @@
     <span class="text-gray-500 text-sm">Todos los campos son obligatorios</span>
   </div>
 
-  <!-- Mensaje de error -->
-  <p *ngIf="!searchQuery.trim()" class="text-red-500 text-sm" role="alert">
+  <p *ngIf="searchQuery.trim() === ''" class="text-red-500 text-sm" role="alert">
     El campo de búsqueda no puede estar vacío
   </p>
 
@@ -54,5 +53,8 @@
   <div class="mt-6">
     <h3 class="text-red-600 font-bold text-md border-b pb-2">Resultados</h3>
     <app-results [results]="results"></app-results>
+    <p *ngIf="showAlert" class="text-red-500 text-sm mt-4" role="alert">
+      No se encontraron resultados que coincidan con la búsqueda.
+    </p>
   </div>
 </div>

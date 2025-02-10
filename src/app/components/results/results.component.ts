@@ -1,21 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { AlertComponent } from '../alert/alert.component';
 import { CommonModule } from '@angular/common';
-
-interface SearchResult {
-  code: string;
-  name: string;
-  document: string;
-  clientType: string;
-}
+import { Person } from '../../models/person.model';
 
 @Component({
   selector: 'app-results',
-  standalone: true,
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css'],
-  imports: [AlertComponent, CommonModule],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class ResultsComponent {
-  @Input() results: SearchResult[] = [];
+  @Input() results: Person[] = [];
 }

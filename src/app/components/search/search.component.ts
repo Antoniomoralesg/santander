@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { ResultsComponent } from '../results/results.component';
 import { CommonModule } from '@angular/common';
+import { Person } from '../../models/person.model';
 
 @Component({
   selector: 'app-search',
@@ -12,11 +13,12 @@ import { CommonModule } from '@angular/common';
   imports: [FormsModule, ResultsComponent, CommonModule],
 })
 export class SearchComponent {
-  results: any[] = [];
+  results: Person[] = [];
   personType: string = 'F';
   searchCriteria: string = 'DOCUMENTO';
-  documentType: string = 'NIF';
+  documentType: string = 'DNI';
   searchQuery: string = '';
+  showAlert: boolean = false;
 
   constructor(private userService: UserService) {}
 
@@ -25,28 +27,26 @@ export class SearchComponent {
       alert('Por favor, ingresa un término de búsqueda');
       return;
     }
-  
-    this.userService.searchEmployees(this.personType, this.searchCriteria, this.searchQuery, this.documentType)
-      .subscribe((data) => {
-        console.log('Datos cargados:', data);
-  
-        this.results = data.filter(person => {
-          // Filtrar por tipo de persona
-          if (person.personType !== this.personType) return false;
-  
-          // Filtrar por criterio de búsqueda
-          if (this.searchCriteria === 'DOCUMENTO') {
-            return person.document.includes(this.searchQuery) && person.documentType === this.documentType;
-          } else if (this.searchCriteria === 'NOMBRE') {
-            return person.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-          }
-  
-          return false;
-        });
-  
-        console.log('Resultados filtrados:', this.results);
-      });
+
+    const data = this.userService.searchEmployees(this.personType, this.searchCriteria, this.searchQuery, this.documentType);
+    console.log('Datos cargados:', data);
+
+    this.results = data.filter(person => {
+      // Filtrar por tipo de persona
+      if (person.personType !== this.personType) return false;
+
+      // Filtrar por criterio de búsqueda
+      if (this.searchCriteria === 'DOCUMENTO') {
+        return person.document.includes(this.searchQuery) && person.documentType === this.documentType;
+      } else if (this.searchCriteria === 'NOMBRE') {
+        return person.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      }
+
+      return false;
+    });
+
+    this.showAlert = this.results.length === 0;
+
+    console.log('Resultados filtrados:', this.results);
   }
-  
-  
 }
