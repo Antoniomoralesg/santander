@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let result of results" class="odd:bg-gray-100 even:bg-gray-50">
+      <tr *ngFor="let result of results" class="odd:bg-gray-100 even:bg-gray-50 hover:bg-gray-200">
         <td class="p-3 border border-gray-300">{{ result.code }}</td>
         <td class="p-3 border border-gray-300">{{ result.name }}</td>
         <td class="p-3 border border-gray-300">{{ result.document }}</td>
@@ -20,7 +20,9 @@
 </div>
 
 <ng-template #noResults>
-  <p class="text-red-500 text-sm mt-4" role="alert">
-    No se encontraron resultados.
-  </p>
+  <div class="text-center mt-4">
+    <p class="text-red-500 text-sm" role="alert">
+      No se encontraron resultados.
+    </p>
+  </div>
 </ng-template>

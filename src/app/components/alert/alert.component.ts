@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common'; // 👈 Importar CommonModule
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-alert',
   standalone: true,
-  imports: [CommonModule], // 👈 Agregar CommonModule aquí
+  imports: [CommonModule], 
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css']
 })

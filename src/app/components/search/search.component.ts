@@ -27,26 +27,31 @@ export class SearchComponent {
       alert('Por favor, ingresa un término de búsqueda');
       return;
     }
-
-    const data = this.userService.searchEmployees(this.personType, this.searchCriteria, this.searchQuery, this.documentType);
-    console.log('Datos cargados:', data);
-
-    this.results = data.filter(person => {
-      // Filtrar por tipo de persona
-      if (person.personType !== this.personType) return false;
-
-      // Filtrar por criterio de búsqueda
-      if (this.searchCriteria === 'DOCUMENTO') {
-        return person.document.includes(this.searchQuery) && person.documentType === this.documentType;
-      } else if (this.searchCriteria === 'NOMBRE') {
-        return person.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+  
+    this.userService.searchEmployees(this.personType, this.searchCriteria, this.searchQuery, this.documentType).subscribe(
+      data => {
+        this.results = data.filter((person: Person) => {
+          // Filtrar por tipo de persona
+          if (person.personType !== this.personType) return false;
+  
+          // Filtrar por criterio de búsqueda
+          if (this.searchCriteria === 'DOCUMENTO') {
+            return person.document.includes(this.searchQuery) && person.documentType === this.documentType;
+          } else if (this.searchCriteria === 'NOMBRE') {
+            return person.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+          }
+  
+          return false;
+        });
+  
+        this.showAlert = this.results.length === 0;
+  
+        console.log('Resultados filtrados:', this.results);
+      },
+      error => {
+        console.error('Error al buscar empleados:', error);
+        alert('Ocurrió un error al realizar la búsqueda. Por favor, intenta nuevamente.');
       }
-
-      return false;
-    });
-
-    this.showAlert = this.results.length === 0;
-
-    console.log('Resultados filtrados:', this.results);
+    );
   }
 }
