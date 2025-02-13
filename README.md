@@ -1,59 +1,27 @@
-# Santander
+# Santander Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+Este es el frontend del proyecto Santander, desarrollado con Angular. El frontend se comunica con un backend desarrollado en Spring Boot y conectado a una base de datos PostgreSQL. Este proyecto es un ejemplo de una aplicación fullstack.
 
-## Development server
+## Tecnologías Utilizadas
 
-To start a local development server, run:
+- **Angular**: Framework para el desarrollo del frontend.
+- **TypeScript**: Lenguaje de programación utilizado en Angular.
+- **HTML y CSS**: Para la estructura y el estilo de la aplicación.
+- **Spring Boot**: Framework para el desarrollo del backend.
+- **PostgreSQL**: Sistema de gestión de bases de datos relacional.
 
-```bash
-ng serve
-```
+## Requisitos Previos
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Node.js**: Entorno de ejecución para JavaScript.
+- **Angular CLI**: Herramienta de línea de comandos para Angular.
+- **Java 8** o superior
+- **Maven**: Herramienta de gestión de proyectos y dependencias.
+- **PostgreSQL**: Base de datos relacional.
 
-## Code scaffolding
+## Configuración del Proyecto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Clonar el Repositorio
 
 ```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git clone https://github.com/tu-usuario/santander-frontend.git
+cd santander-frontend
