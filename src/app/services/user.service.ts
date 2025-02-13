@@ -26,4 +26,8 @@ export class UserService {
   getUserProfile(uid: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/userProfile/${uid}`);
   }
+
+  createPerson(person : Person): Observable<Person> {
+    return this.http.post<Person>(this.apiUrl, person);
+  }
 }

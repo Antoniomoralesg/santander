@@ -33,7 +33,7 @@
       <label class="block text-sm font-medium text-gray-700">Tipo de documento</label>
       <select class="w-full p-2 border rounded-md" [(ngModel)]="documentType" name="documentType" [disabled]="searchCriteria !== 'DOCUMENTO'">
         <option value="DNI">DNI</option>
-        <option value="NIF">NIF</option>
+        <option value="CIF">CIF</option>
       </select>
     </div>
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="col-span-3 flex justify-end">
-      <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg flex items-center">
+      <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg flex items-center">
         🔍 Buscar
       </button>
     </div>
